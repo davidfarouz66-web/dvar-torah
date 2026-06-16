@@ -15,7 +15,8 @@ export default async function DashboardPage() {
     .from('utilisateurs')
     .select('*, organisations(*)')
     .eq('id', user.id)
-    .single()
+    .limit(1)
+    .maybeSingle()
 
   const org = utilisateur?.organisations as { id: string; nom: string; nom_feuillet: string } | null
 

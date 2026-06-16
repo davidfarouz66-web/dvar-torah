@@ -15,7 +15,8 @@ export default async function NouveauFeuilletPage() {
     .from('utilisateurs')
     .select('organisation_id')
     .eq('id', user.id)
-    .single()
+    .limit(1)
+    .maybeSingle()
 
   const { data: org } = await admin
     .from('organisations')

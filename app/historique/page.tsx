@@ -14,7 +14,8 @@ export default async function HistoriquePage() {
     .from('utilisateurs')
     .select('organisation_id')
     .eq('id', user.id)
-    .single()
+    .limit(1)
+    .maybeSingle()
 
   const { data: feuillets } = await admin
     .from('feuillets')

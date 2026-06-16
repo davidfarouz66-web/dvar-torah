@@ -13,7 +13,8 @@ export default async function HistoriqueLayout({ children }: { children: React.R
     .from('utilisateurs')
     .select('*, organisations(*)')
     .eq('id', user.id)
-    .single()
+    .limit(1)
+    .maybeSingle()
 
   const org = utilisateur?.organisations as { nom: string; nom_feuillet: string } | null
 

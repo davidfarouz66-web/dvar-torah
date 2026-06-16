@@ -14,7 +14,8 @@ export default async function ParametresPage() {
     .from('utilisateurs')
     .select('*, organisations(*)')
     .eq('id', user.id)
-    .single()
+    .limit(1)
+    .maybeSingle()
 
   const org = utilisateur?.organisations as Organisation | null
   if (!org) redirect('/dashboard')
